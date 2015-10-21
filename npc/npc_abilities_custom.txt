@@ -1,307 +1,1165 @@
 // Dota Heroes File
 "DOTAAbilities"
 {
-	"Version"       "1"
+	//"Version"       "1"
+	"rc_npc_hero_yondaime_mark_e"//四代火影波风水门——时空道标（Q技能）
+    {
+    	"BaseClass"                                 "ability_datadriven"
+        "AbilityBehavior"                           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+        "AbilityUnitTargetType"						"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+        "AbilityUnitTargetTeam"						"DOTA_UNIT_TARGET_TEAM_BOTH"
+        "AbilityUnitTargetFlags"    				"DOTA_UNIT_TARGET_FLAG_NONE"
+        "AbilityDamageType"							"DAMAGE_TYPE_PHYSICAL"	
 
-	"dota_ability_throw_coin"
-	{
-		"BaseClass"							"ability_datadriven"
-		"AbilityName"						"dota_ability_throw_coin"
-		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityCastAnimation"				"ACT_DOTA_CAST_ABILITY_1"
-		"AbilityCastPoint"					"1.5"
+        "AbilityTextureName"                        "omniknight_purification"			//技能图标名字
+        "AbilityCastPoint"                          "0.3"			 					//技能施法前摇，随等级提升减少
+        "AbilityCooldown"           				"1 2 3 4"								 //技能CD，始终都是1秒
+        "AbilityManaCost"           			    "5 10 15 20"								//技能施法所需魔法值兼消耗的魔法值，随等级提升增加
+		"AbilityCastRange"          				"750"
+		"OnSpellStart"
+        {
+			"RunScript"
+			{
+		        "ScriptFile"        "scripts/vscripts/abilities/heroes/hero_yondaime/mark_e.lua"
+		        "Function"          "MarkE"
+		        "Target"            "TARGET"
+		        "effect_name"       "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+		        "duration"			"%duration"
+		        "radius"            "%radius"
+			}          
+        }
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "radius"                	"400"
+            }
+            "02"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "damage"                   "200 250 300 400"
+            }
+            "03"
+            {
+                "var_type"                 "FIELD_FLOAT"
+                "duration"                   "1.0 1.5 2.0 2.5"
+            } 
+            "04"
+            {
+                "var_type"                 "FIELD_INTEGER"
+                "cooldown"                   "1 2 3 4"
+            }
+            "05"
+            {
+                "var_type"                 "FIELD_INTEGER"
+                "castrange"                 "750"
+            }
+            "06"
+            {
+                "var_type"                 "FIELD_FLOAT"
+                "manacost"                 "5 10 15 20"
+            } 
+        }
+	}
+
+	"rc_npc_hero_yondaime_rasengan"//四代火影波风水门——螺旋丸（W技能）
+    {
+    	"BaseClass"                                 "ability_datadriven"
+        "AbilityBehavior"                           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+        "AbilityUnitDamageType"                     "DAMAGE_TYPE_PURE"        
+        "AbilityUnitTargetType"						"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+        "AbilityUnitTargetTeam"                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityTextureName"                        "magnataur_empower"
+        "AbilityCastPoint"                          "0.3"
+        "AbilityCooldown"                           "1.0 2.0 3.0 4.0"
+        "AbilityManaCost"                           "10 15 20 25"
+		"AbilityCastRange"          				"750"
 
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
-				"ScriptFile"			"overboss.lua"
-				"Function"				"ThrowCoin"
-			}
-		}
-
-		"Modifiers"
-		{
-			"modifier_dota_ability_throw_coin"
+		        "ScriptFile"        "scripts/vscripts/abilities/heroes/hero_yondaime/rasengan.lua"
+		        "Function"          "RaSenGan"
+		        "Target"            "TARGET"
+		        "castrange"			"%castrange"
+		        "radius"            "%radius"
+			} 
+			"Stun"
 			{
-				"IsHidden"				"1"
-				"Passive"				"1"
-				
-				"States"
-				{
-					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_OUT_OF_GAME"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
+				"Target"			"TARGET"
+                "Duration"                 "2"
 			}
 		}
+  		
+		"AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "radius"                	"150"
+            }          
+            "02"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "castrange"                	"750"
+            }
+        }
 	}
-	
-	"dota_ability_throw_coin_long"
-	{
-		"BaseClass"							"ability_datadriven"
-		"AbilityName"						"dota_ability_throw_coin_long"
-		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityCastAnimation"				"ACT_DOTA_CAST_ABILITY_2"
-		"AbilityCastPoint"					"2.5"
 
+	"rc_npc_hero_yondaime_transient_body_e"//四代火影波风水门——瞬身之术（E技能）
+    {
+    	"BaseClass"                                 "ability_datadriven"
+        "AbilityBehavior"                           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+        "AbilityUnitTargetType"						"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+        "AbilityUnitDamageType"                     "DAMAGE_TYPE_PURE"        
+        "AbilityUnitTargetTeam"                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityTextureName"                        "sven_storm_bolt"
+        "AbilityCastPoint"                          "0.3"
+        "AbilityCooldown"                           "1.0 2.0 3.0 4.0"
+        "AbilityManaCost"                           "5"
+		"AbilityCastRange"          				"600"
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
-				"ScriptFile"			"overboss.lua"
-				"Function"				"ThrowCoin"
+		        "ScriptFile"        "scripts/vscripts/abilities/heroes/hero_yondaime/transient_body_e.lua"
+		        "Function"          "TransientBodyE"
+		        "Target"            "TARGET"
 			}
 		}
-
-		"Modifiers"
-		{
-			"modifier_dota_ability_throw_coin"
-			{
-				"IsHidden"				"1"
-				"Passive"				"1"
-				
-				"States"
-				{
-					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_OUT_OF_GAME"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}
+		"AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "damage"                	"400"
+            }          
+        }
 	}
+
+	"rc_npc_hero_yondaime_shi_ki_fuu_jin"//四代火影波风水门——尸鬼封尽（R技能）
+    {
+	    "AbilityBehavior"                                "DOTA_ABILITY_BEHAVIOR_POINT"
+        "BaseClass"                                         "ability_datadriven"
+        "AbilityTextureName"                        "juggernaut_omni_slash"
+		"MaxLevel" 									"3"
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastPoint"                                "0.0"
+
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                                "0.3"
+
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityManaCost"                                "0"
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        	"scripts/vscripts/abilities/heroes/hero_yondaime/shi_ki_fuu_jin.lua"
+                "Function"              "ShiKiFuuJin"
+                "Target"                "POINT"
+            }
+
+            "ApplyModifier"
+            {
+                "ModifierName"          "Modifier_MyAbility_Point_2_1"
+                "Target"                "CASTER"
+            }
+
+            "ApplyModifier"
+            {
+                "ModifierName"          "modifier_phased"
+                "Target"                "CASTER"
+            }
+        }
+
+        "Modifiers"
+        {
+            "Modifier_MyAbility_Point_2_1"
+            {
+                "Duration"                			"0.2"
+                "OverrideAnimation"                 "ACT_DOTA_ATTACK_EVENT"
+            }
+        }
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "radius"                "300 400 500 600"
+            }
+            "02"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "damage"                "100 110 120 130"
+            }
+        }
+	}
+	"rc_npc_hero_yondaime_hirai_jin_noji_yutsu"//四代火影波风水门——飞雷神之术（D技能）
+    {
+    	"ID"										"1852"
+    	// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"ember_spirit_sleight_of_fist"
+		"AOERadius"						"250 350 450 550"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"1"
 	
-	"dota_ability_celebrate"
-	{
-		"BaseClass"							"ability_datadriven"
-		"AbilityName"						"dota_ability_celebrate"
-		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityCastAnimation"				"ACT_DOTA_CAST_ABILITY_3"
-
-		"Modifiers"
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"2"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"modifier_dota_ability_celebrate"
+			"01"
 			{
-				"IsHidden"				"1"
-				"Passive"				"1"
-				
-				"States"
-				{
-					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_OUT_OF_GAME"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"250 350 450 550"
+			}
+			
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_hero_damage"			"200 400 600 800"
+			}
+						
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"attack_interval"			"0.2"
+			}
+	
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"creep_damage_penalty"			"300"
 			}
 		}
-	}
-
-	"dota_ability_vision_revealer"
-	{
-		"BaseClass"          			    "ability_datadriven"
-		"AbilityName"           			"dota_ability_vision_revealer"
-		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
+		
+		// Data driven
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"						"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+			"particle"						"particles/units/heroes/hero_ember_spirit/ember_spirit_sleight_of_fist_cast.vpcf"
+			"particle"						"particles/units/heroes/hero_ember_spirit/ember_spirit_sleight_of_fist_caster.vpcf" // for dummy
+			"particle"						"particles/units/heroes/hero_ember_spirit/ember_spirit_sleight_of_fist_targetted_marker.vpcf"
+			"particle"						"particles/units/heroes/hero_ember_spirit/ember_spirit_sleightoffist_tgt.vpcf"
+			"particle"						"particles/units/heroes/hero_ember_spirit/ember_spirit_sleightoffist_trail.vpcf"
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"Target"					"CASTER"
+				"EffectName"				"Hero_EmberSpirit.SleightOfFist.Cast"
+			}
+		
+			"ApplyModifier"
+			{
+				"Target"					"CASTER"
+				"ModifierName"				"modifier_sleight_of_fist_caster_datadriven"
+			}
+		
+			"RunScript"
+			{
+				"ScriptFile"				"scripts/vscripts/abilities/heroes/hero_yondaime/hirai_jin_noji_yutsu.lua"
+				"Function"					"HiraiJinNojiYutsu"
+				"Target"					"POINT"
+			}
+		}
+		
 		"Modifiers"
 		{
-			"modifier_dota_ability_vision_revealer"
+			"modifier_sleight_of_fist_caster_datadriven"
 			{
-				"IsHidden"				"1"
-				"Passive"				"1"
-				
+				"IsPurgable"				"0"
+			
 				"States"
 				{
-					"MODIFIER_STATE_PROVIDES_VISION"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_UNSELECTABLE"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_OUT_OF_GAME"		"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}
-	}
-
-	"dota_ability_xp_granter"
-	{
-		"BaseClass"          			    "ability_datadriven"
-		"AbilityName"           			"dota_ability_xp_granter"
-		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"Modifiers"
-		{
-			"modifier_dota_ability_xp_granter"
-			{
-				"IsHidden"				"1"
-				"Passive"				"1"
-				
-				"Aura"					"modifier_get_xp"
-				"Aura_Radius"			"800"
-				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-				"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
-				"Aura_ApplyToCaster"	"0"
-				"Aura_Flags"    		"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
-
-				"States"
-				{
-					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_OUT_OF_GAME"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-
-				"ThinkInterval"	".5"
-
-				"OnIntervalThink"
-				{
-					"GrantXPGold"
-					{
-						"Target"
-						{
-							"Center"		"CASTER"
-							"radius"		"1000"
-							"Types"			"DOTA_UNIT_TARGET_HERO"
-							"Flags"			"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
-						}
-						"XPAmount"		"8"
-						"SplitEvenly"	"0"
-						"GoldAmount"	"4"
-						"ReliableGold"	"0"
-					}
-				}
-			}
-
-			"modifier_get_xp"
-			{
-				"Passive"       "1"
-				"EffectName"	""
-				"TextureName"	"custom_games_xp_coin"
-			}
-		}
-	}
-
-	"dota_ability_xp_global"
-	{
-		"BaseClass"          			    "ability_datadriven"
-		"AbilityName"           			"dota_ability_xp_global"
-		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"Modifiers"
-		{
-			"modifier_dota_ability_xp_global"
-			{
-				"IsHidden"				"1"
-				"Passive"				"1"
-				
-				"Aura"					"modifier_get_xp_global"
-				"Aura_Radius"			"8000"
-				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-				"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
-				"Aura_ApplyToCaster"	"0"
-				"Aura_Flags"    		"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
-
-				"States"
-				{
-					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_OUT_OF_GAME"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-
-				"ThinkInterval"	".5"
-
-				"OnIntervalThink"
-				{
-					"GrantXPGold"
-					{
-						"Target"
-						{
-							"Center"		"CASTER"
-							"radius"		"3400"
-							"Types"			"DOTA_UNIT_TARGET_HERO"
-							"Flags"			"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
-						}
-						"XPAmount"		"6"
-						"SplitEvenly"	"0"
-						"GoldAmount"	"4"
-						"ReliableGold"	"0"
-					}
-				}
-			}
-
-			"modifier_get_xp_global"
-			{
-				"Passive"       "1"
-				"EffectName"	"particles/econ/courier/courier_greevil_yellow/courier_greevil_yellow_ambient_3_b.vpcf"
-				"TextureName"	"alchemist_goblins_greed"
-			}
-		}
-	}
-
-	/=================================================================================================================
-	// Ability: Treasure Courier
-	//=================================================================================================================
-	"dota_ability_treasure_courier"
-	{
-		"BaseClass"          			    "ability_datadriven"
-		"AbilityName"           			"dota_ability_health_granter"
-		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		"Modifiers"
-		{
-			"modifier_dota_ability_treasure_courier"
-			{
-				"IsHidden"				"1"
-				"Passive"				"1"
-				
-				"Aura"					""
-				"Aura_Radius"			"600"
-				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-				"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
-				"Aura_ApplyToCaster"	"0"
-
-				"States"
-				{
-					"MODIFIER_STATE_UNSELECTABLE"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_ATTACK_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_OUT_OF_GAME"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ROOTED"				"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+			
+			"modifier_sleight_of_fist_dummy_datadriven"
+			{
+				"IsPurgable"				"0"
+				"IsHidden"					"1"
+				
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"					"TARGET"
+						"EffectName"				"particles/units/heroes/hero_ember_spirit/ember_spirit_sleight_of_fist_caster.vpcf"
+						"EffectAttachType"			"start_at_customorigin"
+						"ControlPointEntities"
+						{
+							"TARGET"				"attach_hitloc"
+						}
+					}
+				}
+				
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"					"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"					"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"				"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"					"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"					"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"				"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"						"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+			
+			"modifier_sleight_of_fist_target_datadriven"
+			{
+				"IsPurgable"				"0"
+			
+				"EffectName"				"particles/units/heroes/hero_ember_spirit/ember_spirit_sleight_of_fist_targetted_marker.vpcf"
+				"EffectAttachType"			"follow_overhead"
+			}
+			
+			"modifier_sleight_of_fist_target_hero_datadriven"
+			{
+				"IsPurgable"				"0"
+				"IsHidden"					"1"
+			
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_hero_damage"
+				}
+			}
+			
+			"modifier_sleight_if_fist_target_creep_datadriven"
+			{
+				"IsPurgable"				"0"
+				"IsHidden"					"1"
+			
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%creep_damage_penalty"
 				}
 			}
 		}
 	}
-
-	//=================================================================================================================
-	// Ability: Dummy
-	//=================================================================================================================
-	"dota_ability_dummy"
-	{
-		"BaseClass"          			    "ability_datadriven"
-		"AbilityName"           			"dota_ability_dummy"
-		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
+	
+	"rc_npc_hero_kimimaro_yanagai_no_mai"//君麻吕——柳之舞（Q技能）
+    {
+    	"ID"										"1862"
+    	// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityUnitTargetType"     	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		//指定目标类型是普通单位或者英雄
+        "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+        //指定目标是敌人
+        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        //指定目标是不需要考虑任何flag
+        "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NONE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"ember_spirit_sleight_of_fist"
+		"AOERadius"						"250 350 450 550"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"1"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"2"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"250 350 450 550"
+			}
+			
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_hero_damage"			"200 400 600 800"
+			}
+						
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"damage"					"4 6 8 10"
+			}
+	
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_r"					"5.5 8 10.5 13"
+			}
+		}
+		
+		// Data driven
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"						"soundevents/game_sounds_heroes/game_sounds_hero_kimimaro.vsndevts"
+			"particle"						"particles/units/heroes/hero_ember_spirit/ember_spirit_sleight_of_fist_caster.vpcf" // for dummy
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"Target"					"CASTER"
+				"EffectName"				"1hero_kimimaro.liuzhiwu"
+			}
+		
+			"RunScript"
+			{
+				"ScriptFile"				"scripts/vscripts/abilities/heroes/hero_kimimaro/yanagai_no_mai.lua"
+				"Function"					"YanagaiNoMai"
+				"Target"					"TARGET"
+			}
+			  "ApplyModifier"
+            {
+                "ModifierName"          "modifier_phased"
+                "Target"                "CASTER"
+            }
+		}
+		
 		"Modifiers"
 		{
-			"modifier_dota_ability_dummy"
+			"modifier_yanagai_no_mai_datadriven"//创建特效
 			{
-				"IsHidden"				"1"
-				"Passive"				"1"
+				"IsPurgable"				"0"
+				"IsHidden"					"1"
 				
-				"States"
+				"OnCreated"
 				{
-					//"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_UNSELECTABLE"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NOT_ON_MINIMAP"		"MODIFIER_STATE_VALUE_ENABLED"
-					//"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_ATTACK_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
+					"AttachEffect"
+					{
+						"Target"					"CASTER"
+						"EffectName"				"particles/units/heroes/hero_ember_spirit/ember_spirit_sleight_of_fist_caster.vpcf"
+						"EffectAttachType"			"start_at_customorigin"
+						"ControlPointEntities"
+						{
+							"TARGET"				"attach_hitloc"
+						}
+					}
 				}
 			}
 		}
-	}	
+	}
+	"rc_npc_hero_kimimaro_tsubaki_no_mai"//君麻吕——（W技能）
+    {
+    	"ID"										"1872"
+    	// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityUnitTargetType"     	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		//指定目标类型是普通单位或者英雄
+        "AbilityUnitTargetType"     	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+        //指定目标是敌人
+        "AbilityUnitTargetTeam"     	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+        //指定目标是不需要考虑任何flag
+        "AbilityUnitTargetFlags"    	"DOTA_UNIT_TARGET_FLAG_NONE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		
+		"AbilityCastRange"				"200"
+		"AbilityCastPoint"				"0"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"attribute_bonus"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"1"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"2"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_unit_damage"			"100 150 200 250"
+			}
+			
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_hero_damage"			"200 400 600 800"
+			}
+						
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"attack_interval"			"0.2"
+			}
+	
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"creep_damage_penalty"			"300"
+			}
+		}
+		
+		// Data driven
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"						"soundevents/game_sounds_heroes/game_sounds_hero_kimimaro.vsndevts"
+			"particle"						"particles/units/heroes/hero_bane/bane_fiends_grip.vpcf"
+			"particle"						"particles/units/heroes/hero_silencer/silencer_last_word_status.vpcf"
+			"particle"						"particles/units/heroes/hero_siren/naga_siren_mirror_image.vpcf"
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"Target"					"CASTER"
+				"EffectName"				"hero_kimimaro.chunzhiwu"
+			}
+		
+		
+			"RunScript"
+			{
+				"ScriptFile"				"scripts/vscripts/abilities/heroes/hero_kimimaro/tsubaki_no_mai.lua"
+				"Function"					"TsubakiNoMai"
+				"Target"					"TARGET"
+			}
+		}
+		
+		"Modifiers"
+		{
+			
+			"modifier_sleight_of_fist_dummy_datadriven"
+			{
+				"IsPurgable"				"0"
+				"IsHidden"					"1"
+				
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"					"TARGET"
+						"EffectName"				"particles/units/heroes/hero_silencer/silencer_last_word_status.vpcf"
+						"EffectAttachType"			"start_at_customorigin"
+						"ControlPointEntities"
+						{
+							"TARGET"				"attach_hitloc"
+						}
+					}
+				}
+				
+				"States"
+				{
+				}
+			}
+			
+			"modifier_sleight_of_fist_target_datadriven"
+			{
+				"IsPurgable"				"0"
+			
+				"EffectName"				"particles/units/heroes/hero_siren/naga_siren_mirror_image.vpcf"
+				"EffectAttachType"			"follow_overhead"
+			}
+			
+			"modifier_sleight_of_fist_target_hero_datadriven"
+			{
+				"IsPurgable"				"0"
+				"IsHidden"					"1"
+			
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_hero_damage"
+				}
+			}
+			
+			"modifier_sleight_if_fist_target_creep_datadriven"
+			{
+				"IsPurgable"				"0"
+				"IsHidden"					"1"
+			
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%creep_damage_penalty"
+				}
+			}
+		}
+	}
+	
+	
+	"rc_npc_hero_kimimaro_karamatsu_no_mai"//君麻吕——（E技能）
+    {
+    	"ID"										"1872"
+    	// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityUnitTargetType"     	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		//指定目标类型是普通单位或者英雄
+        "AbilityUnitTargetType"     	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+        //指定目标是敌人
+        "AbilityUnitTargetTeam"     	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+        //指定目标是不需要考虑任何flag
+        "AbilityUnitTargetFlags"    	"DOTA_UNIT_TARGET_FLAG_NONE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		
+		"AbilityCastRange"				"200"
+		"AbilityCastPoint"				"0"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"ancient_apparition_cold_feet"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"1"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"2"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"100 150 200 250"
+			}
+			
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"armor_increase"			"20 40 60 80"
+			}
+						
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"2"
+			}
+	
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"creep_damage_penalty"		"300"
+			}
+		}
+		
+		// Data driven
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"						"soundevents/game_sounds_heroes/game_sounds_hero_kimimaro.vsndevts"
+			"particle"						"particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+			"particle"						"particles/econ/items/sven/sven_warcry_ti5/sven_spell_warcry_ti_5.vpcf"
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"Target"					"CASTER"
+				"EffectName"				"hero_kimimaro.tangsongzhiwu"
+			}
+		
+		
+			"RunScript"
+			{
+				"ScriptFile"				"scripts/vscripts/abilities/heroes/hero_kimimaro/karamatsu_no_mai.lua"
+				"Function"					"Karamatsu_No_Mai"
+				"Target"					"CASTER"
+			}
+		}
+		
+		"Modifiers"
+		{
+			
+			"modifier_effectName_datadriven"
+			{
+				"IsPurgable"				"0"
+				"IsHidden"					"1"
+				
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"				"particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+						"EffectAttachType"			"follow_origin"
+						"Target" 					"CASTER"
+						 "ControlPoints"
+				           {
+				               "00" "0 0 0"
+				               "01" "200 1 1" // 范围(Radius)
+				               "15" "255 200 0" // 颜色(Color)
+				               "16" "1 0 0"
+				           }
+					}
+				}
+			}
+
+			
+			"modifier_armor_increase_caster_hero_datadriven"
+			{
+				"IsPurgable"				"0"
+				"IsHidden"					"0"
+				"Duration" 					"2"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_increase"
+				}
+			}
+		}
+	}
+	
+	"rc_npc_hero_kimimaro_zhouyin"//君麻吕——咒印（R技能）
+    {
+    	"ID"										"1872"
+    	// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityUnitTargetType"     	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		//指定目标类型是普通单位或者英雄
+        "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+        //指定目标是敌人
+        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        //指定目标是不需要考虑任何flag
+        "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NONE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"tinker_rearm"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"1"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"2"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"attack"					"50 100 150"
+			}
+			
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"20 30 40"
+			}
+			
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"armor_bonus"				"50 100 150"
+			}
+						
+		}
+		
+		// Data driven
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"						"soundevents/game_sounds_heroes/game_sounds_hero_kimimaro.vsndevts"
+			"particle"						"particles/base_attacks/ranged_tower_bad.vpcf"
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"Target"					"CASTER"
+				"EffectName"				"hero_kimimaro.zhouyin"
+			}
+			"RunScript"
+			{
+				"ScriptFile"				"scripts/vscripts/abilities/heroes/hero_kimimaro/zhouyin.lua"
+				"Function"					"SawarabiNoMai"
+				"Target"					"CASTER"
+			}
+		
+			"ApplyModifier"
+			{
+				"Target"					"CASTER"
+				"ModifierName"				"modifier_kimimaro_zhouyin_caster_datadriven"
+			}
+
+		}
+		
+		"Modifiers"
+		{
+			"modifier_kimimaro_zhouyin_caster_datadriven"
+			{
+				"IsPurgable"				"0"
+				"Duration" 					"%duration"
+				"IsHidden"					"0"
+				"States"
+				{
+					
+				}
+				 "Properties"
+			    {
+			        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 				"%attack"
+			        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%armor_bonus" 
+			    }
+				 "OnCreated"
+		        {
+	                "AttachEffect"
+	                {
+                        "EffectName"                "particles/base_attacks/ranged_tower_bad.vpcf"
+                        "EffectAttachType"  		"follow_origin"
+                        "Target"                     "CASTER"
+	                }
+		        }
+			}	
+		}
+	}
+	
+	"rc_npc_hero_kimimaro_sawarabi_no_mai"//君麻吕——早蕨之舞（D技能）
+    {
+    	"ID"										"1874"
+    	// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		//指定目标类型是普通单位或者英雄
+        "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+        //指定目标是敌人
+        "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        //指定目标是不需要考虑任何flag
+        "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NONE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"tidehunter_ravage"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"1"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"2"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"						"600"
+			}
+						
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"damage"					"15"
+			}
+	
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_r"					"18"
+			}
+						
+		}
+		
+		// Data driven
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"						"soundevents/game_sounds_heroes/game_sounds_hero_kimimaro.vsndevts"
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"Target"					"CASTER"
+				"EffectName"				"hero_kimimaro.caojuezhiwu"
+			}
+			"RunScript"
+			{
+				"ScriptFile"				"scripts/vscripts/abilities/heroes/hero_kimimaro/sawarabi_no_mai.lua"
+				"Function"					"SawarabiNoMai"
+				"Target"					"CASTER"
+			}
+
+		}
+	}
+	"rc_npc_hero_jiaodu_toukeku"//角都——头刻苦（Q技能）
+    {
+    	// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"lina_dragon_slave"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_hero_jiaodu.vsndevts"
+			"particle"			"particles/units/heroes/hero_lina/lina_spell_dragon_slave.vpcf"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.45 0.45 0.45 0.45"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"1"
+		"AbilityDuration"				"0.6875 0.6875 0.6875 0.6875"
+	
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"2.5 5 7.5 10"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"5"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dragon_slave_speed"		"1200"
+			}
+			
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dragon_slave_width_initial"	"275"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dragon_slave_width_end"		"200"
+			}
+			
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dragon_slave_distance"			"800"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"damage"					"2.5 5 7.5 10"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"LinearProjectile"
+			{
+				"Target"      "POINT"
+			    "EffectName"  "particles/units/heroes/hero_lina/lina_spell_dragon_slave.vpcf"
+			    "MoveSpeed"   "%dragon_slave_speed"//发射速率
+			    "StartRadius"   "%dragon_slave_width_initial" //获取的开始范围
+			    "StartPosition" "CASTER"
+			    "EndRadius"     "%dragon_slave_width_end" //获取的终止范围
+			    "FixedDistance" "%dragon_slave_distance" //距离
+			    "HasFrontalCone"    "1"//不晓得是什么玩意
+			    "ProvidesVision" "0"//是否给予视野
+			    "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+			    "TargetTypes"   "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+			    "TargetFlags"   "DOTA_UNIT_TARGET_FLAG_NONE"
+
+			}
+	
+			"FireSound"
+			{
+				"EffectName"	"hero_jiaodu.toukeku"
+				"Target"		"CASTER"
+			}
+		}
+	
+		"OnProjectileHitUnit"
+		{
+			DeleteOnHit  0
+			"RunScript"
+				{
+					"ScriptFile"				"scripts/vscripts/abilities/heroes/hero_jiaodu/toukeku.lua"
+					"Function"					"TouKeKu"
+					"Target"					"TARGET"
+		                
+				}
+		}
+	}
+	
+	"rc_npc_hero_jiaodu_toukeku"//角都——压害（W技能）
+    {
+    	// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"lina_dragon_slave"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_hero_jiaodu.vsndevts"
+			"particle"			"particles/units/heroes/hero_invoker/invoker_tornado.vpcf"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.45 0.45 0.45 0.45"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"1"
+		"AbilityDuration"				"0.6875 0.6875 0.6875 0.6875"
+	
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"2.5 5 7.5 10"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"5"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dragon_slave_speed"		"1200"
+			}
+			
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dragon_slave_width_initial"	"275"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dragon_slave_width_end"		"200"
+			}
+			
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dragon_slave_distance"			"800"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"damage"					"2.5 5 7.5 10"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"LinearProjectile"
+			{
+				"Target"      "POINT"
+			    "EffectName"  "particles/units/heroes/hero_lina/lina_spell_dragon_slave.vpcf"
+			    "MoveSpeed"   "%dragon_slave_speed"//发射速率
+			    "StartRadius"   "%dragon_slave_width_initial" //获取的开始范围
+			    "StartPosition" "CASTER"
+			    "EndRadius"     "%dragon_slave_width_end" //获取的终止范围
+			    "FixedDistance" "%dragon_slave_distance" //距离
+			    "HasFrontalCone"    "1"//不晓得是什么玩意
+			    "ProvidesVision" "0"//是否给予视野
+			    "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+			    "TargetTypes"   "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+			    "TargetFlags"   "DOTA_UNIT_TARGET_FLAG_NONE"
+
+			}
+	
+			"FireSound"
+			{
+				"EffectName"	"hero_jiaodu.toukeku"
+				"Target"		"CASTER"
+			}
+		}
+	
+		"OnProjectileHitUnit"
+		{
+			DeleteOnHit  0
+			"RunScript"
+				{
+					"ScriptFile"				"scripts/vscripts/abilities/heroes/hero_jiaodu/toukeku.lua"
+					"Function"					"TouKeKu"
+					"Target"					"TARGET"
+		                
+				}
+		}
+	}
+	
+	
+	
+	
 }

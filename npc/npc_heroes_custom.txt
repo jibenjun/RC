@@ -3,5 +3,85 @@
 // the specified key-value combinations.  Use override_hero <hero_to_override> for this.
 "DOTAHeroes"
 {
+		"npc_dota_hero_juggernaut"
+        {
+                "override_hero"                                   	"npc_dota_hero_juggernaut"    
+                //"Model"                     						"models/creeps/baby_rosh_halloween/baby_rosh_radiant/baby_rosh_radiant.vmdl"   // 模型
+                 "ModelScale"               						"1.0"               // 怪物的倍数            
+                "AttackRate"                                	  "0.5"      //攻击速度
+                "AbilityLayout"                                   "6"
+                "Ability1"                                        "rc_npc_hero_kimimaro_yanagai_no_mai"     //技能1
+                "Ability2"                                        "rc_npc_hero_kimimaro_tsubaki_no_mai"     //技能2
+                "Ability3"                                        "rc_npc_hero_kimimaro_karamatsu_no_mai"     //技能3
+                "Ability4"                                        "rc_npc_hero_kimimaro_sawarabi_no_mai"     //技能4
+                "Ability5"                                        "rc_npc_hero_kimimaro_zhouyin"     //技能4
+                "Ability6"                                        "attribute_bonus"
+                "VisionNighttimeRange"                			  "900"    //夜晚视野
+                // Status
+                //----------------------------------------------------------------
+                "StatusHealth"              "6000"       // 基础生命值
+                "StatusH1ealthRegen"         "0"         // 生命恢复速度
+                "StatusMana"                "0"         // 基础魔法值
+                "StatusManaRegen"           "0"         // 魔法恢复速度
+                "StatusStartingMana"        "-1"        // 创建出来就是满血
+        }
+        "npc_dota_hero_phantom_assassin"
+        {
+                "override_hero"                                   "npc_dota_hero_phantom_assassin"                    
+                 "ModelScale"               						"1.0"               // 怪物的倍数            
+                "AttackRate"                                	  "0.5"      //攻击速度
+                "AbilityLayout"                                   "6"
+                "Ability1"                                        "rc_npc_hero_jiaodu_toukeku"     //技能1
+                "Ability2"                                        "rc_npc_hero_jiaodu_yahai"     //技能2
+                "Ability3"                                        " "     //技能3
+                "Ability4"                                        " "     //技能4
+                "Ability5"                                        " "     //技能4
+                "Ability6"                                        "attribute_bonus"
+                "VisionNighttimeRange"                			  "900"    //夜晚视野
+                // Status
+                //----------------------------------------------------------------
+                "StatusHealth"              "6000"       // 基础生命值
+                "StatusH1ealthRegen"         "0"         // 生命恢复速度
+                "StatusMana"                "0"         // 基础魔法值
+                "StatusManaRegen"           "0"         // 魔法恢复速度
+                "StatusStartingMana"        "-1"        // 创建出来就是满血
+        }
 
+        "npc_dota_hero_ursa"
+        {
+                "override_hero"                                   "npc_dota_hero_ursa"                
+                "AttackRate"                                	  "0.5"      //攻击速度
+                "Ability1"                                        "MyAbility_unit6"     //技能1
+                "VisionNighttimeRange"                			  "9000"    //夜晚视野
+        }
+
+        "npc_dota_hero_sven"
+        {
+                "override_hero"                                   "npc_dota_hero_sven"                
+                "AttackRate"                                    "0.5"      //攻击速度
+                "AbilityLayout"                                   "5"
+                "Ability1"                                        "rc_npc_hero_yondaime_mark_e"      //技能1Q
+                "Ability2"                                        "rc_npc_hero_yondaime_rasengan"      //技能2W
+                "Ability3"                                        "rc_npc_hero_yondaime_transient_body_e"      //技能3E
+                "Ability4"                                        "rc_npc_hero_yondaime_hirai_jin_noji_yutsu"      //技能4D
+                "Ability5"                                        "rc_npc_hero_yondaime_shi_ki_fuu_jin"      //技能5F
+                "Ability7"                                        "attribute_bonus"      //技能3
+                
+                "VisionNighttimeRange"                                    "900"    //夜晚视野
+                // Status
+                //----------------------------------------------------------------
+                "StatusHealth"              "6000"       // 基础生命值
+                "StatusH1ealthRegen"         "0"         // 生命恢复速度
+                "StatusMana"                "0"         // 基础魔法值
+                "StatusManaRegen"           "0"         // 魔法恢复速度
+                "StatusStartingMana"        "-1"        // 创建出来就是满血
+        }
+
+        "npc_dota_hero_rubick"
+        {
+                "override_hero"                                   "npc_dota_hero_rubick"                
+                "AttackRate"                                	  "0.5"      //攻击速度
+                "Ability1"                                        "MyAbility_unit8"     //技能1
+                "VisionNighttimeRange"                			  "9000"    //夜晚视野
+        }
 }

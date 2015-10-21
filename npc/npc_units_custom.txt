@@ -38,8 +38,8 @@
       // Attack
       //----------------------------------------------------------------
       "AttackCapabilities"        "DOTA_UNIT_CAP_MELEE_ATTACK"  //攻击类型
-      "AttackDamageMin"           "30"                         // 最小伤害
-      "AttackDamageMax"           "35"                         // 最大伤害
+      "AttackDamageMin"           "100"                         // 最小伤害
+      "AttackDamageMax"           "300"                         // 最大伤害
       "AttackDamageType"          "DAMAGE_TYPE_PHYSICAL"
       "AttackRate"                "1.7"                       // 攻击间隔
       "AttackAnimationPoint"      "0.75"                      // 攻击前摇
@@ -61,7 +61,7 @@
 
       // 打死这个单位所获得的奖励
       //----------------------------------------------------------------
-      "BountyXP"                  "500"         // 经验奖励
+      "BountyXP"                  "5000"         // 经验奖励
       "BountyGoldMin"             "1000"         // 最小金钱奖励
       "BountyGoldMax"             "2000"         // 最大金钱奖励
 
@@ -82,7 +82,7 @@
 
       // Status
       //----------------------------------------------------------------
-      "StatusHealth"              "400"       // 基础生命值
+      "StatusHealth"              "800"       // 基础生命值
       "StatusHealthRegen"         "0"         // 生命恢复速度
       "StatusMana"                "0"         // 基础魔法值
       "StatusManaRegen"           "0"         // 魔法恢复速度
@@ -113,108 +113,23 @@
 
       "vscript"                   "scripts/vscripts/AI.lua"   //AI就是这样实现的
    }
-
-
-
-	"npc_dota_xp_granter"
-	{
-		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/development/invisiblebox.vmdl"
-		"Ability1"					"dota_ability_xp_granter"
-		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
-		"BountyXP"					"0"
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
-		"StatusHealth"				"5000"
-		"TeamName"					"DOTA_TEAM_NEUTRALS"
-	}
-
-	"npc_dota_kobold_overboss"
-	{
-		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/props_structures/midas_throne/kobold_overboss.vmdl"
-		"Ability1"					"dota_ability_throw_coin"
-		"Ability2"					"dota_ability_throw_coin_long"
-		"Ability3"					"dota_ability_celebrate"
-		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
-		"BountyXP"					"0"
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
-		"StatusHealth"				"5000"
-		"TeamName"					"DOTA_TEAM_NEUTRALS"
-	}
-
-	"npc_dota_kobold_radiantboss"
-	{
-		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/props_structures/midas_throne/kobold_radiantboss.vmdl"
-		"Ability1"					"dota_ability_throw_coin"
-		"Ability2"					"dota_ability_throw_coin_long"
-		"Ability3"					"dota_ability_celebrate"
-		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
-		"BountyXP"					"0"
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
-		"StatusHealth"				"5000"
-		"TeamName"					"DOTA_TEAM_NEUTRALS"
-	}
-
-	"npc_dota_kobold_underboss"
-	{
-		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/props_structures/midas_throne/kobold_underboss.vmdl"
-		"Ability1"					"dota_ability_throw_coin"
-		"Ability2"					"dota_ability_throw_coin_long"
-		"Ability3"					"dota_ability_celebrate"
-		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
-		"BountyXP"					"0"
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
-		"StatusHealth"				"5000"
-		"TeamName"					"DOTA_TEAM_NEUTRALS"
-	}
-
-	"npc_vision_revealer"
-	{
-		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/development/invisiblebox.vmdl"
-		"Ability1"					"dota_ability_vision_revealer"
-		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
-		"BountyXP"					"0"
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
-		"StatusHealth"				"5000"
-		"TeamName"					"DOTA_TEAM_NEUTRALS"
-		"VisionDaytimeRange"		"600"
-		"VisionNighttimeRange"		"600"
-		"MinimapIcon"				"minimap_treasure_chest"
-		"MinimapIconSize"			"500"
-		"MinimapDisableTint"		"1"
-	}
-
-	"npc_dota_xp_global"
-	{
-		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/development/invisiblebox.vmdl"
-		"Ability1"					"dota_ability_xp_global"
-		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
-		"BountyXP"					"0"
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
-		"StatusHealth"				"5000"
-		"TeamName"					"DOTA_TEAM_NEUTRALS"
-	}
-
-	//=================================================================================	
-	// Creature: Basic Zombie
-	//=================================================================================
-	"npc_dota_creature_basic_zombie"
+//=================================================================================
+// 说明：中路测试塔
+//=================================================================================
+	"rc_tower_field"
 	{
 		// General
 		//
-		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
-		"Model"						"models/heroes/undying/undying_minion.vmdl"	// Model.
-		"SoundSet"					"Undying_Zombie"					// Name of sound set.
-		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
-		"ModelScale"				"1"
+		"BaseClass"					"npc_dota_tower"	// Class of entity of link to.
+		"Model"						"models/props_structures/tower_good.mdl"// Model.
+		"SoundSet"					"Tower.Water"					// Name of sound set.
+		"MinimapIcon"				"minimap_tower90"
+		"MinimapIconSize"			"320"
 		"Level"						"1"
-				
+		
 		// Abilities
 		//----------------------------------------------------------------
+		
 		"Ability1"					""			// Ability 1.
 		"Ability2"					""			// Ability 2.
 		"Ability3"					""			// Ability 3.
@@ -226,335 +141,178 @@
 
 		// Armor
 		//----------------------------------------------------------------
-		"ArmorPhysical"				"3"			// Physical protection.
-		"MagicalResistance"			"33"		// Magical protection.
+		"ArmorPhysical"				"20"		// Physical protection.
+		"MagicalResistance"				"0"			// Magical protection.
 
 		// Attack
 		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"24"		// Damage range min.
-		"AttackDamageMax"			"40"		// Damage range max.
-		"AttackRate"				"1.6"		// Speed of attack.
-		"AttackAnimationPoint"		"0.3"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"400"		// Range within a target can be acquired.
-		"AttackRange"				"128"		// Range within a target can be attacked.
-		"ProjectileModel"			""			// Particle system model for projectile.
-		"ProjectileSpeed"			""			// Speed of projectile.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"100"		// Damage range min.
+		"AttackDamageMax"			"120"		// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1"			// Speed of attack.
+		"AttackAnimationPoint"		"0.6"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+		"AttackRange"				"700"		// Range within a target can be attacked.
+		"ProjectileModel"			"ranged_tower_good"		// Particle system model for projectile.
+		"ProjectileSpeed"			"750"		// Speed of projectile.
+
+		// Attributes
+		//----------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"0"			// Base strength
+		"AttributeStrengthGain"		"0"			// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"			// Base intelligence
+		"AttributeIntelligenceGain"	"0"			// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"			// Base agility
+		"AttributeAgilityGain"		"0"			// Agility bonus per level.
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"45"		// Experience earn.
-		"BountyGoldMin"				"18"		// Gold earned min.
-		"BountyGoldMax"				"32"		// Gold earned max.
+		"BountyXP"					"25"		// Experience earn.
+		"BountyGoldMin"				"0"		// Gold earned min.
+		"BountyGoldMax"				"0"		// Gold earned max.
 
 		// Bounds
 		//----------------------------------------------------------------
-		"RingRadius"				"70"
-		"HealthBarOffset"			"160"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+		"BoundsHullName"			"DOTA_HULL_SIZE_TOWER"			// Hull type used for navigation/locomotion.
+		"ProjectileCollisionSize"	"50"
+		"RingRadius"				"130"
+		"HealthBarOffset"			"260"
 
 		// Movement
 		//----------------------------------------------------------------
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
-		"MovementSpeed"				"120"		// Speed
-		"MovementTurnRate"			"0.5"		// Turning rate.
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"			// Type of locomotion - ground, air
+		"MovementSpeed"				"0"			// Speed
+		"MovementTurnRate"			"1.0"			// Turning rate.
 
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"250"		// Base health.
-		"StatusHealthRegen"			"0.25"		// Health regeneration rate.
+		"StatusHealth"				"1300"		// Base health.
+		"StatusHealthRegen"			"0"			// Health regeneration rate.
 		"StatusMana"				"0"			// Base mana.
 		"StatusManaRegen"			"0"			// Mana regeneration rate.
 
 		// Team
 		//----------------------------------------------------------------
-		"TeamName"					"DOTA_TEAM_NEUTRALS"			// Team name.
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		//"TeamName"					"DOTA_TEAM_GOODGUYS"			// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		
 		// Vision
 		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"1000"		// Range of vision during day light.
-		"VisionNighttimeRange"		"1000"		// Range of vision at night time.
-		
-		// Creature Data
-		//----------------------------------------------------------------------------------------------------------------------
-		"Creature"
-		{
-			"CanRespawn"				"0"
-			
-			//Basic AI State
-			//-----------------------------------------------------------------
-			"DefaultState"				"Invade"
-			
-			"States"
-			{
-				"Invade"
-				{
-					"Name"				"Invade"
-					"Aggression"		"20.0"
-					"Avoidance"			"0.0"
-					"Support"			"0.0"
-				}
-			}
-
-			//Level Up Parameters
-			//-----------------------------------------------------------------
-			"HPGain"					"40"
-			"DamageGain"				"10"
-			"ArmorGain"					"1"
-			"MagicResistGain"			"1"
-			"MoveSpeedGain"				"1"
-			"BountyGain"				"5"
-			"XPGain"					"20"
-
-			//Ability Usage Parameters
-			//-----------------------------------------------------------------
-		}
+		"VisionDaytimeRange"		"1900"		// Range of vision during day light.
+		"VisionNighttimeRange"		"800"		// Range of vision at night time.
 	}
+	"boss"
+   {
+      "BaseClass"                 "npc_dota_creature"     // 单位继承的类，这个类有很多，一般我们用npc_dota_creature
+      "Model"                     "models/courier/baby_rosh/babyroshan.vmdl"   // 模型
+      "SoundSet"                  "hero_Crystal"      // 音效，
+      "Level"                     "5"                 // 单位等级
+      "IsAncient"                 "0"                 // 是否是远古生物，0代表不是
+      "IsNeutralUnitType"         "0"                 // 是否是中立单位
+      "SelectionGroup"            ""                  // 这个貌似是切换单位组用的，不必管
+      "SelectOnSpawn"             "0"                 // 创建出来之后是否立即选择
+      "CanBeDominated"            "1"                 // 可否被支配
+      "IgnoreAddSummonedToSelection" "0"              // 是否忽略左上角图标
+      "AutoAttacksByDefault"      "1"                 // 是否自动攻击
+      "ModelScale"                "1.0"               // 怪物的倍数
 
-	//=================================================================================
-	// Creature: Berserk Zombie
-	//=================================================================================
-	"npc_dota_creature_berserk_zombie"
-	{
-		// General
-		//
-		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
-		"Model"						"models/heroes/undying/undying_minion_torso.vmdl"	// Model.
-		"SoundSet"					"Undying_Zombie"					// Name of sound set.
-		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
-		"ModelScale"				"1"
-		"Level"						"1"
-		"CanBeDominated"			"1"
-		
-		// Abilities
-		//----------------------------------------------------------------
-		
-		"Ability1"					"zombie_berserk"			// Ability 1
-		"Ability2"					""			// Ability 2.
-		"Ability3"					""			// Ability 3.
-		"Ability4"					""			// Ability 4.
-		"Ability5"					""			// Ability 5.
-		"Ability6"					""			// Ability 6 - Extra.
-		"Ability7"					""			// Ability 7 - Extra.
-		"Ability8"					""			// Ability 8 - Extra.
+      // Abilities
+      //----------------------------------------------------------------
+      "AbilityLayout"             ""          // 技能槽数量，最低4个，最高为6个，技能不多默认即可
+      "Ability1"                  ""          // 技能 1.
+      "Ability2"                  ""          // 技能 2.
+      "Ability3"                  ""          // 技能 3.
+      "Ability4"                  ""          // 技能 4.
+      "Ability5"                  ""          // 技能 5.
+      "Ability6"                  ""          // 技能 6
+      "Ability7"                  ""          // 技能 7 -最高就显示6个技能，后面添加的技能将不显示
+      "Ability8"                  ""          // 技能 8 -最高就显示6个技能，后面添加的技能将不显示
 
-		// Armor
-		//----------------------------------------------------------------
-		"ArmorPhysical"				"4"			// Physical protection.
-		"MagicalResistance"			"33"		// Magical protection.
+      // Armor
+      //----------------------------------------------------------------
+      "ArmorPhysical"             "0"         // 基础护甲
+      "MagicalResistance"         "0"         // 基础魔抗
 
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"24"		// Damage range min.
-		"AttackDamageMax"			"30"		// Damage range max.
-		"AttackRate"				"1.6"		// Speed of attack.
-		"AttackAnimationPoint"		"0.3"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"400"		// Range within a target can be acquired.
-		"AttackRange"				"128"		// Range within a target can be attacked.
-		"ProjectileModel"			""			// Particle system model for projectile.
-		"ProjectileSpeed"			""			// Speed of projectile.
+      // Attack
+      //----------------------------------------------------------------
+      "AttackCapabilities"        "DOTA_UNIT_CAP_MELEE_ATTACK"  //攻击类型
+      "AttackDamageMin"           "30"                         // 最小伤害
+      "AttackDamageMax"           "35"                         // 最大伤害
+      "AttackDamageType"          "DAMAGE_TYPE_PHYSICAL"
+      "AttackRate"                "1.7"                       // 攻击间隔
+      "AttackAnimationPoint"      "0.75"                      // 攻击前摇
+      "AttackAcquisitionRange"    "300"                       // 警戒范围
+      "AttackRange"               "100"                       // 攻击范围
+      "AttackRangeBuffer"         "250"                       // 攻击缓冲范围
+      "ProjectileModel"           ""                          // 投射物，填写特效路径，只有投射物特效才行
+      "ProjectileSpeed"           ""                          // 投射速率
 
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"					"40"		// Experience earn.
-		"BountyGoldMin"				"18"		// Gold earned min.
-		"BountyGoldMax"				"32"		// Gold earned max.
+      // Attributes
+      //----------------------------------------------------------------
+      "AttributePrimary"          "DOTA_ATTRIBUTE_AGILITY"  //属性类型，对于单位就没必要了
+      "AttributeBaseStrength"     "0"         // 力量
+      "AttributeStrengthGain"     "0"         // 每升一级力量加成
+      "AttributeBaseIntelligence" "0"         // 智力
+      "AttributeIntelligenceGain" "0"         // 每升一级智力加成
+      "AttributeBaseAgility"      "0"         // 敏捷
+      "AttributeAgilityGain"      "0"         // 每升一级敏捷加成
 
-		// Bounds
-		//----------------------------------------------------------------
-		"RingRadius"				"70"
-		"HealthBarOffset"			"160"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+      // 打死这个单位所获得的奖励
+      //----------------------------------------------------------------
+      "BountyXP"                  "5000"         // 经验奖励
+      "BountyGoldMin"             "1000"         // 最小金钱奖励
+      "BountyGoldMax"             "2000"         // 最大金钱奖励
 
-		// Movement
-		//----------------------------------------------------------------
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
-		"MovementSpeed"				"120"		// Speed
-		"MovementTurnRate"			"0.5"		// Turning rate.
+      // Bounds
+      //----------------------------------------------------------------
+      "BoundsHullName"            "DOTA_HULL_SIZE_HERO"   // 碰撞类型
+      "RingRadius"                "50"                    // 选择圈范围
+      "HealthBarOffset"           "-1"                    // 血条偏移量(Z轴)
 
-		// Status
-		//----------------------------------------------------------------
-		"StatusHealth"				"250"		// Base health.
-		"StatusHealthRegen"			"5.0"		// Health regeneration rate.
-		"StatusMana"				"0"			// Base mana.
-		"StatusManaRegen"			"0"			// Mana regeneration rate.
+      // Movement
+      //----------------------------------------------------------------
+      "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"  
+       // 移动类型
+      "MovementSpeed"             "300"                       // 移动速度
+      "MovementTurnRate"          "0.5"                       // 转身速度
+      "HasAggressiveStance"       "0"                         //
+      "FollowRange"               "50"                       // 最低跟随范围
 
-		// Team
-		//----------------------------------------------------------------
-		"TeamName"					"DOTA_TEAM_NEUTRALS"			// Team name.
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"1000"		// Range of vision during day light.
-		"VisionNighttimeRange"		"1000"		// Range of vision at night time.
+      // Status
+      //----------------------------------------------------------------
+      "StatusHealth"              "4000"       // 基础生命值
+      "StatusHealthRegen"         "0"         // 生命恢复速度
+      "StatusMana"                "0"         // 基础魔法值
+      "StatusManaRegen"           "0"         // 魔法恢复速度
+      "StatusStartingMana"        "-1"        // 创建出来就是满血
 
-		// Creature Data
-		//----------------------------------------------------------------------------------------------------------------------
-		"Creature"
-		{
-			"CanRespawn"				"0"
+      // Team
+      //----------------------------------------------------------------
+      "TeamName"                  "DOTA_TEAM_NEUTRALS"                // 所属队伍，关系不大
+      "CombatClassAttack"         "DOTA_COMBAT_CLASS_ATTACK_HERO"     // 攻击的伤害类型
+      "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_HERO"     // 护甲类型
+      "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"   //单位关系类
 
-			//Basic AI State
-			//-----------------------------------------------------------------
-			"DefaultState"				"Invade"
-			"States"
-			{
-				"Invade"
-				{
-					"Name"				"Invade"
-					"Aggression"		"50.0"
-					"Avoidance"			"0.0"
-					"Support"			"0.0"
-				}
-			}
+      // Vision
+      //----------------------------------------------------------------
+      "VisionDaytimeRange"        "575"       // 白天视野范围
+      "VisionNighttimeRange"      "575"       // 夜晚视野范围
 
-			"PermanentDesire"			"1"
+      // Bots
+      //----------------------------------------------------------------
+      "AttackDesire"              "1.0"       // 攻击欲望，AI的
 
-			//Level Up Parameters
-			//-----------------------------------------------------------------
-			"HPGain"					"75"
-			"DamageGain"				"10"
-			"ArmorGain"					"1"
-			"MagicResistGain"			"1"
-			"MoveSpeedGain"				"1"
-			"BountyGain"				"5"
-			"XPGain"					"20"
+      //Inventory
+      "HasInventory"              "0"         // 是否有物品栏
 
-			//Ability Usage Parameters
-			//-----------------------------------------------------------------
-			"DefensiveAbilities"
-			{
-				"Ability1"				
-				{
-					"Name"				"creature_zombie_berserk"
-					"UseSelfishly"		"1"
-					"Buff"				"1"
-					"UseAtHealthPercent""50"
-				}
-			}
-		}
-	}
+      "WakesNeutrals"             "1"         // 是否会引起中立注意
 
-	//=================================================================================	
-	// Creature: Treasure Chest Courier
-	//=================================================================================
-	"npc_dota_treasure_courier"
-	{
-		// General
-		//
-		"BaseClass"					"npc_dota_base"	// Class of entity of link to.
-		"Model"						"models/courier/lockjaw/lockjaw_flying.vmdl"	// Model.
-		"SoundSet"					""					// Name of sound set.
-		"GameSoundsFile"			""
-		"ModelScale"				"1"
-		"Level"						"1"
-		"CanBeDominated"			"0"
+      "IdleSoundLoop"             ""          // 单位空闲时音效循环
 
-		// Abilities
-		//----------------------------------------------------------------
-		"Ability1"					"dota_ability_treasure_courier"			// Ability 1.
-		"Ability2"					""			// Ability 2.
-		"Ability3"					""			// Ability 3.
-		"Ability4"					""			// Ability 4.
-		"Ability5"					""			// Ability 5.
-		"Ability6"					""			// Ability 6 - Extra.
-		"Ability7"					""			// Ability 7 - Extra.
-		"Ability8"					""			// Ability 8 - Extra.
-
-		// Armor
-		//----------------------------------------------------------------
-		"ArmorPhysical"				"3"			// Physical protection.
-		"MagicalResistance"			"33"		// Magical protection.
-
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
-		"AttackDamageMin"			"0"			// Damage range min.
-		"AttackDamageMax"			"0"			// Damage range max.
-		"AttackRate"				"1.6"		// Speed of attack.
-		"AttackAnimationPoint"		"0.3"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"0"		// Range within a target can be acquired.
-		"AttackRange"				"0"		// Range within a target can be attacked.
-		"ProjectileModel"			""			// Particle system model for projectile.
-		"ProjectileSpeed"			""			// Speed of projectile.
-
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"					"45"		// Experience earn.
-		"BountyGoldMin"				"18"		// Gold earned min.
-		"BountyGoldMax"				"32"		// Gold earned max.
-
-		// Bounds
-		//----------------------------------------------------------------
-		"RingRadius"				"70"
-		"HealthBarOffset"			"160"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
-
-		// Movement
-		//----------------------------------------------------------------
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"			// Type of locomotion - ground, air
-		"MovementSpeed"				"350"		// Speed
-		"MovementTurnRate"			"0.5"		// Turning rate.
-
-		// Status
-		//----------------------------------------------------------------
-		"StatusHealth"				"5000"		// Base health.
-		"StatusHealthRegen"			"0"		// Health regeneration rate.
-		"StatusMana"				"0"			// Base mana.
-		"StatusManaRegen"			"0"			// Mana regeneration rate.
-
-		// Team
-		//----------------------------------------------------------------
-		"TeamName"					"DOTA_TEAM_NEUTRALS"			// Team name.
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"1000"		// Range of vision during day light.
-		"VisionNighttimeRange"		"1000"		// Range of vision at night time.
-		
-		// Creature Data
-		//----------------------------------------------------------------------------------------------------------------------
-		"Creature"
-		{
-			"CanRespawn"				"0"
-			
-			//Basic AI State
-			//-----------------------------------------------------------------
-			"DefaultState"				"Invade"
-			
-			"States"
-			{
-				"Invade"
-				{
-					"Name"				"Invade"
-					"Aggression"		"0.0"
-					"Avoidance"			"0.0"
-					"Support"			"0.0"
-				}
-			}
-
-			//Level Up Parameters
-			//-----------------------------------------------------------------
-			"HPGain"					"40"
-			"DamageGain"				"10"
-			"ArmorGain"					"1"
-			"MagicResistGain"			"1"
-			"MoveSpeedGain"				"1"
-			"BountyGain"				"5"
-			"XPGain"					"20"
-
-			//Ability Usage Parameters
-			//-----------------------------------------------------------------
-		}
-	}
+      "vscript"                   "scripts/vscripts/AI.lua"   //AI就是这样实现的
+   }	
 }	
